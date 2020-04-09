@@ -44,11 +44,10 @@ data "aws_subnet_ids" "example" {
 resource "aws_elb" "bar" {
   name               = "foobar-terraform-elb"
   subnets = data.aws_subnet_ids.example.ids
-  security_groups = [aws_security_group.allow_tls.id]
 
   
   listener {
-    instance_port     = 8080
+    instance_port     = 80
     instance_protocol = "http"
     lb_port           = 80
     lb_protocol       = "http"
